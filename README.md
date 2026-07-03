@@ -245,7 +245,6 @@ See `.env.example` for reference.
 
 The original project requirements and architecture decisions are preserved in `docs/` for reference:
 
-- [`docs/project-prompt.md`](docs/project-prompt.md) — the full project brief with all requirements
 - [`docs/architecture.md`](docs/architecture.md) — high-level architecture and methodology overview
 - [`docs/implementation-plan.md`](docs/implementation-plan.md) — the original implementation plan
 
