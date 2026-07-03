@@ -1,0 +1,9 @@
+# Python dependencies for the Causal Impact Platform
+# Pinned for compatibility — pycausalimpact 0.1.1 uses DataFrame.applymap()
+# which was removed in pandas 3.0. Keep pandas < 3.0 until pycausalimpact
+# releases a fix.
+
+pycausalimpact==0.1.1
+pandas>=2.0,<3.0
+statsmodels>=0.14
+scipy>=1.10

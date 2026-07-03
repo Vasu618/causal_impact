@@ -37,7 +37,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Create a Python venv and install the analysis dependencies
 RUN python3 -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
-RUN pip install --no-cache-dir pycausalimpact pandas statsmodels scipy
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the standalone Next.js build output
 COPY --from=builder /app/.next/standalone ./
