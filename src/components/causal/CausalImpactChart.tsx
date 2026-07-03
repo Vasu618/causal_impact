@@ -57,9 +57,11 @@ export function CausalImpactChart({ result }: CausalImpactChartProps) {
     return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: '2-digit' });
   };
 
-  const tooltipFormatter = (value: number | undefined, name: string) => {
-    if (value === undefined || value === null || Number.isNaN(value)) return ['—', name];
-    return [`$${value.toLocaleString(undefined, { maximumFractionDigits: 2 })}`, name];
+  const tooltipFormatter = (value: unknown, name: string): [string, string] => {
+    if (value === undefined || value === null || typeof value === 'number' && Number.isNaN(value)) return ['—', name];
+    const num = typeof value === 'number' ? value : Number(value);
+    if (Number.isNaN(num)) return [String(value), name];
+    return [`$${num.toLocaleString(undefined, { maximumFractionDigits: 2 })}`, name];
   };
 
   return (

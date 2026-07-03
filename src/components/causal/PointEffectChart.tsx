@@ -43,9 +43,11 @@ export function PointEffectChart({ result }: PointEffectChartProps) {
     return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
   };
 
-  const tooltipFormatter = (value: number | undefined, name: string) => {
-    if (value === undefined || value === null || Number.isNaN(value))
+  const tooltipFormatter = (value: unknown, name: string): [string, string] => {
+    if (value === undefined || value === null || (typeof value === 'number' && Number.isNaN(value)))
       return ['—', name];
+    const num = typeof value === 'number' ? value : Number(value);
+    if (Number.isNaN(num)) return [String(value), name];
     const label =
       name === 'effect'
         ? 'Daily Effect'
@@ -54,7 +56,7 @@ export function PointEffectChart({ result }: PointEffectChartProps) {
         : name === 'upper'
         ? 'CI Upper'
         : name;
-    return [`$${value.toLocaleString(undefined, { maximumFractionDigits: 2 })}`, label];
+    return [`$${num.toLocaleString(undefined, { maximumFractionDigits: 2 })}`, label];
   };
 
   return (
@@ -151,7 +153,7 @@ export function PointEffectChart({ result }: PointEffectChartProps) {
                 radius={[2, 2, 0, 0]}
               >
                 {postData.map((entry, idx) => (
-                  <Cell key={idx} fill={entry.effect >= 0 ? 'var(--chart-2)' : 'var(--chart-5)'} />
+                  <Cell key={idx} fill={(entry.effect ?? 0) >= 0 ? 'var(--chart-2)' : 'var(--chart-5)'} />
                 ))}
               </Bar>
             </ComposedChart>
