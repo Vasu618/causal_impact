@@ -49,29 +49,6 @@ The hero explains the core idea in one line, with an animated chart mockup showi
 
 ![Hero section](docs/hero.png)
 
-### Methodology
-
-A 4-step explanation of how the Bayesian model fits, projects, and quantifies significance — plus a side-by-side comparison of how the same algorithm gives different verdicts on two scenarios:
-
-![Methodology section](docs/methodology.png)
-
-### Upload & configure
-
-Drag-and-drop CSV upload (or load a pre-built sample), auto-detected columns, and an intervention date picker:
-
-![Upload section](docs/upload.png)
-
-### Results — metrics
-
-After running the analysis, get a clear verdict banner plus four metric cards (Average Effect, Cumulative Effect, P-Value, Relative Effect):
-
-![Results metrics](docs/results-metrics.png)
-
-### Results — charts
-
-An interactive Actual-vs-Counterfactual chart with a 95% confidence band and intervention marker, plus a daily Point Effects bar chart:
-
-![Results charts](docs/results-charts.png)
 
 ---
 
