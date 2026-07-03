@@ -4,6 +4,8 @@
 
 A web dashboard that uses Bayesian Structural Time-Series (Google's CausalImpact methodology) to answer one question: *"What would have happened if the intervention never occurred?"*
 
+**Live demo: [causal-impact-platform.onrender.com](https://causal-impact-platform.onrender.com/)**
+
 ---
 
 ## The Problem
@@ -257,4 +259,4 @@ The original project requirements and architecture decisions are preserved in `d
 
 ## License
 
-Open-source reference implementation.
+[MIT](LICENSE) — free to use, modify, and distribute.
