@@ -138,6 +138,51 @@ Open `http://localhost:3000` in your browser.
 
 ---
 
+## Deployment
+
+This app uses **two runtimes** (Node.js + Python), so it can't deploy to pure-serverless platforms like Vercel or Netlify. Use a container-based platform instead.
+
+### Option 1: Render (recommended, free)
+
+1. Create a free account at [render.com](https://render.com)
+2. Click **New → Web Service** → connect your GitHub repo
+3. Render will auto-detect the `Dockerfile` — just click **Create Web Service**
+4. The free plan (512 MB RAM) is enough for the app. It spins down after 15 min of inactivity and wakes on the next request (~30s cold start).
+
+Alternatively, use the included `render.yaml` Blueprint:
+1. In Render dashboard, go to **Blueprints → New Blueprint Instance**
+2. Select your GitHub repo — Render reads `render.yaml` and configures everything automatically.
+
+### Option 2: Fly.io (free tier)
+
+```bash
+# Install flyctl
+curl -L https://fly.io/install.sh | sh
+
+# Launch
+fly launch
+fly deploy
+```
+
+### Option 3: Any VPS with Docker
+
+```bash
+docker build -t causal-impact .
+docker run -p 3000:3000 -e NODE_ENV=production causal-impact
+```
+
+### Environment variables
+
+| Variable | Default | Description |
+|---|---|---|
+| `NODE_ENV` | `production` | Node environment |
+| `PYTHON_BIN` | `python3` (prod) / `/home/z/.venv/bin/python3` (dev) | Path to Python binary |
+| `PORT` | `3000` | Server port |
+
+See `.env.example` for reference.
+
+---
+
 ## Features
 
 - **Drag-and-drop CSV upload** with auto-detection of date / target / covariate columns

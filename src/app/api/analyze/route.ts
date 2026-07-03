@@ -6,7 +6,14 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 120;
 
-const PYTHON_BIN = '/home/z/.venv/bin/python3';
+// Resolve the Python binary — use env var if set (Docker/production),
+// otherwise try common paths (dev sandbox, system Python)
+const PYTHON_BIN =
+  process.env.PYTHON_BIN ||
+  process.env.PYTHON_PATH ||
+  (process.env.NODE_ENV === 'production'
+    ? 'python3'
+    : '/home/z/.venv/bin/python3');
 const SCRIPT_PATH = path.join(process.cwd(), 'scripts', 'run_analysis.py');
 
 interface AnalysisPayload {

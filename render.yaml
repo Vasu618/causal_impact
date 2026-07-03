@@ -1,0 +1,19 @@
+# Render Blueprint — deploy to render.com
+# Create a free account at https://render.com and connect your GitHub repo,
+# or use the "Blueprint" feature with this file.
+
+services:
+  - type: web
+    name: causal-impact-platform
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PYTHON_BIN
+        value: python3
+    # Free plan: 512 MB RAM, 0.1 CPU. Spins down after 15 min inactivity.
+    # First request after sleep takes ~30s to wake up.

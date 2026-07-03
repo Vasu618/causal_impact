@@ -1,0 +1,35 @@
+# Version control
+.git
+.gitignore
+
+# Dependencies
+node_modules
+
+# Next.js build output (we rebuild in Docker)
+.next
+out
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+dev.log
+server.log
+
+# Sandbox artifacts
+.zscripts
+Caddyfile
+skills
+upload
+download
+db
+
+# Documentation screenshots (not needed at runtime)
+docs
+
+# OS files
+.DS_Store
+Thumbs.db
