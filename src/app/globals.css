@@ -1,0 +1,401 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ----------------------------------------------------------------------------
+   Theme tokens — map CSS vars to Tailwind v4 color utilities
+   (shadcn/ui compatibility layer; do not remove)                       */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* ----------------------------------------------------------------------------
+   Light mode — THE primary experience.
+   Clean white canvas with deep ink text, chartreuse accent, premium feel.    */
+:root {
+  --radius: 0.625rem;
+
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.18 0.012 280);
+
+  --card: oklch(1 0.002 85);
+  --card-foreground: oklch(0.18 0.012 280);
+
+  --popover: oklch(1 0.002 85);
+  --popover-foreground: oklch(0.18 0.012 280);
+
+  --primary: oklch(0.62 0.19 130);
+  --primary-foreground: oklch(0.99 0.005 85);
+
+  --secondary: oklch(0.96 0.006 85);
+  --secondary-foreground: oklch(0.22 0.012 280);
+
+  --muted: oklch(0.965 0.006 85);
+  --muted-foreground: oklch(0.46 0.012 280);
+
+  --accent: oklch(0.94 0.06 130);
+  --accent-foreground: oklch(0.3 0.1 130);
+
+  --destructive: oklch(0.55 0.22 25);
+
+  --border: oklch(0.18 0.012 280 / 0.09);
+  --input: oklch(0.18 0.012 280 / 0.06);
+  --ring: oklch(0.62 0.19 130 / 0.5);
+
+  /* Chart palette — light variants */
+  --chart-1: oklch(0.62 0.19 130);   /* chartreuse — "Actual"            */
+  --chart-2: oklch(0.55 0.14 155);   /* softer green — secondary series  */
+  --chart-3: oklch(0.68 0.16 70);    /* amber                            */
+  --chart-4: oklch(0.55 0.2 300);    /* purple                           */
+  --chart-5: oklch(0.62 0.2 30);     /* coral — counterfactual/warnings  */
+
+  /* Sidebar */
+  --sidebar: oklch(0.99 0.003 85);
+  --sidebar-foreground: oklch(0.18 0.012 280);
+  --sidebar-primary: oklch(0.62 0.19 130);
+  --sidebar-primary-foreground: oklch(0.99 0.005 85);
+  --sidebar-accent: oklch(0.94 0.06 130);
+  --sidebar-accent-foreground: oklch(0.3 0.1 130);
+  --sidebar-border: oklch(0.18 0.012 280 / 0.09);
+  --sidebar-ring: oklch(0.62 0.19 130 / 0.5);
+
+  /* Multi-layer background — light variants (very subtle, supportive only) */
+  --bg-mesh-1: oklch(0.85 0.2 130 / 0.022);
+  --bg-mesh-2: oklch(0.75 0.18 30 / 0.016);
+  --bg-mesh-3: oklch(0.7 0.13 220 / 0.014);
+  --bg-noise-opacity: 0.008;
+}
+
+/* ----------------------------------------------------------------------------
+   Dark mode — secondary experience.
+   Deep purple-black with warm undertones, cream text, vibrant chartreuse
+   as the signature accent, coral for warnings / counterfactuals.            */
+.dark {
+  --radius: 0.625rem;
+
+  --background: oklch(0.13 0.008 280);
+  --foreground: oklch(0.97 0.008 80);
+
+  --card: oklch(0.16 0.01 280);
+  --card-foreground: oklch(0.97 0.008 80);
+
+  --popover: oklch(0.16 0.012 280);
+  --popover-foreground: oklch(0.97 0.008 80);
+
+  --primary: oklch(0.85 0.2 130);
+  --primary-foreground: oklch(0.13 0.02 280);
+
+  --secondary: oklch(0.2 0.012 280);
+  --secondary-foreground: oklch(0.97 0.008 80);
+
+  --muted: oklch(0.18 0.01 280);
+  --muted-foreground: oklch(0.68 0.012 280);
+
+  --accent: oklch(0.22 0.04 130);
+  --accent-foreground: oklch(0.88 0.18 130);
+
+  --destructive: oklch(0.7 0.19 25);
+
+  /* Borders = white at low opacity (the editorial hairline trick) */
+  --border: oklch(1 0 0 / 0.08);
+  --input: oklch(1 0 0 / 0.1);
+  --ring: oklch(0.85 0.2 130 / 0.5);
+
+  /* Chart palette — full saturation on the deep canvas */
+  --chart-1: oklch(0.85 0.2 130);    /* chartreuse — primary "Actual"    */
+  --chart-2: oklch(0.72 0.13 150);   /* softer green — secondary series  */
+  --chart-3: oklch(0.78 0.15 70);    /* amber                            */
+  --chart-4: oklch(0.7 0.18 300);    /* purple — for variety             */
+  --chart-5: oklch(0.75 0.18 30);    /* coral — counterfactual / warning */
+
+  /* Sidebar — a touch darker than the main canvas to create depth */
+  --sidebar: oklch(0.11 0.008 280);
+  --sidebar-foreground: oklch(0.97 0.008 80);
+  --sidebar-primary: oklch(0.85 0.2 130);
+  --sidebar-primary-foreground: oklch(0.13 0.02 280);
+  --sidebar-accent: oklch(0.2 0.02 280);
+  --sidebar-accent-foreground: oklch(0.88 0.18 130);
+  --sidebar-border: oklch(1 0 0 / 0.08);
+  --sidebar-ring: oklch(0.85 0.2 130 / 0.5);
+
+  /* Multi-layer background — dark variants (softer, less dominant) */
+  --bg-mesh-1: oklch(0.85 0.2 130 / 0.06);
+  --bg-mesh-2: oklch(0.75 0.18 30 / 0.045);
+  --bg-mesh-3: oklch(0.7 0.13 220 / 0.035);
+  --bg-noise-opacity: 0.022;
+}
+
+/* ----------------------------------------------------------------------------
+   Base layer
+   -------------------------------------------------------------------------- */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    /* Firefox page scrollbar */
+    scrollbar-width: thin;
+    scrollbar-color:
+      color-mix(in oklch, var(--muted-foreground) 28%, transparent)
+      transparent;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    /* Editorial number / glyph rendering for Geist */
+    font-feature-settings: "ss01", "cv01", "cv02", "cv11";
+    font-variant-numeric: tabular-nums;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Lock the background canvas so the mesh doesn't tear on overscroll */
+    background-attachment: fixed;
+  }
+
+  /* ------------------------------------------------------------------------
+     Background — soft, static, low-opacity radial gradients only.
+     No decorative image, no grid. Multiple large washes that fade smoothly
+     into the canvas. Supportive, never dominant.                          */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -2;
+    background:
+      radial-gradient(1100px circle at 12% 8%, var(--bg-mesh-1), transparent 62%),
+      radial-gradient(1300px circle at 88% 92%, var(--bg-mesh-2), transparent 65%),
+      radial-gradient(900px circle at 50% 50%, var(--bg-mesh-3), transparent 70%);
+    background-size: 100% 100%, 100% 100%, 100% 100%;
+    background-position: 0 0, 0 0, 0 0;
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    will-change: transform;
+  }
+
+  /* ------------------------------------------------------------------------
+     Background — Layer 2
+     SVG feTurbulence noise at very low opacity. Adds just a hint of texture
+     so the page doesn't feel flat, without becoming a visible feature.      */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    opacity: var(--bg-noise-opacity);
+    mix-blend-mode: overlay;
+  }
+
+  /* ------------------------------------------------------------------------
+     Selection — chartreuse-tinted, low-key                                         */
+  ::selection {
+    background: color-mix(in oklch, var(--primary) 22%, transparent);
+    color: var(--foreground);
+    text-shadow: none;
+  }
+
+  /* ------------------------------------------------------------------------
+     Page scrollbar — WebKit (Chrome / Safari / Edge)
+     Slim, semi-transparent, with a hover lift.                                    */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in oklch, var(--muted-foreground) 22%, transparent);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in oklch, var(--muted-foreground) 42%, transparent);
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+  /* ------------------------------------------------------------------------
+     Focus-visible — chartreuse halo, no native outline jitter                     */
+  :focus-visible {
+    outline: 2px solid color-mix(in oklch, var(--primary) 70%, transparent);
+    outline-offset: 2px;
+  }
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   Utilities layer
+   -------------------------------------------------------------------------- */
+@layer utilities {
+  /* ------------------------------------------------------------------------
+     Glassmorphism — two strengths                                                 */
+  .glass {
+    background: color-mix(in oklch, var(--card) 62%, transparent);
+    backdrop-filter: blur(14px) saturate(150%);
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
+    border: 1px solid color-mix(in oklch, var(--foreground) 6%, transparent);
+  }
+  .glass-strong {
+    background: color-mix(in oklch, var(--card) 84%, transparent);
+    backdrop-filter: blur(20px) saturate(170%);
+    -webkit-backdrop-filter: blur(20px) saturate(170%);
+    border: 1px solid color-mix(in oklch, var(--foreground) 8%, transparent);
+  }
+
+  /* ------------------------------------------------------------------------
+     Editorial card surface — subtle gradient + inset hairline + soft shadow
+     Apply alongside `bg-card` on Card / Panel components for extra depth.        */
+  .card-gradient {
+    background-image:
+      linear-gradient(
+        180deg,
+        color-mix(in oklch, var(--foreground) 4%, transparent) 0%,
+        transparent 40%,
+        color-mix(in oklch, var(--background) 35%, transparent) 100%
+      );
+    box-shadow:
+      inset 0 1px 0 0 color-mix(in oklch, var(--foreground) 6%, transparent),
+      inset 0 0 0 1px color-mix(in oklch, var(--foreground) 2%, transparent),
+      0 1px 2px 0 oklch(0 0 0 / 0.18),
+      0 8px 24px -12px oklch(0 0 0 / 0.4);
+  }
+
+  /* ------------------------------------------------------------------------
+     Hairline border — the editorial 1px-at-low-opacity look                       */
+  .hairline {
+    border: 1px solid color-mix(in oklch, var(--foreground) 8%, transparent);
+  }
+  .hairline-b {
+    border-bottom: 1px solid color-mix(in oklch, var(--foreground) 8%, transparent);
+  }
+  .hairline-t {
+    border-top: 1px solid color-mix(in oklch, var(--foreground) 8%, transparent);
+  }
+
+  /* ------------------------------------------------------------------------
+     Accent glows — chartreuse + coral                                             */
+  .glow-primary {
+    box-shadow:
+      0 0 0 1px color-mix(in oklch, var(--primary) 30%, transparent),
+      0 6px 32px -6px color-mix(in oklch, var(--primary) 28%, transparent),
+      0 2px 8px -2px color-mix(in oklch, var(--primary) 20%, transparent);
+  }
+  .glow-coral {
+    box-shadow:
+      0 0 0 1px color-mix(in oklch, var(--chart-5) 30%, transparent),
+      0 6px 32px -6px color-mix(in oklch, var(--chart-5) 26%, transparent);
+  }
+
+  /* ------------------------------------------------------------------------
+     Gradient text — foreground → primary, for editorial headlines               */
+  .text-gradient-primary {
+    background: linear-gradient(
+      135deg,
+      var(--foreground) 0%,
+      color-mix(in oklch, var(--primary) 75%, var(--foreground)) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  /* ------------------------------------------------------------------------
+     Mono utility (uses Geist Mono)                                                */
+  .text-mono {
+    font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular,
+      "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    font-feature-settings: "ss01", "cv01";
+  }
+
+  /* ------------------------------------------------------------------------
+     Text flow helpers — balance headings, pretty paragraphs                      */
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* ------------------------------------------------------------------------
+     Thin custom scrollbar (drop onto any scrollable element)                     */
+  .scroll-thin {
+    scrollbar-width: thin;
+    scrollbar-color:
+      color-mix(in oklch, var(--muted-foreground) 30%, transparent)
+      transparent;
+  }
+  .scroll-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .scroll-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scroll-thin::-webkit-scrollbar-thumb {
+    background: color-mix(in oklch, var(--muted-foreground) 30%, transparent);
+    border-radius: 999px;
+  }
+  .scroll-thin::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in oklch, var(--muted-foreground) 50%, transparent);
+  }
+
+  /* ------------------------------------------------------------------------
+     Animation-safe surface lift — pair with hover: utilities                     */
+  .lift-on-hover {
+    transition:
+      transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 220ms cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .lift-on-hover:hover {
+    transform: translateY(-1px);
+  }
+}
