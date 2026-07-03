@@ -105,10 +105,10 @@ export function Header() {
             Paper
           </a>
           <a
-            href="https://github.com/jamalsenouci/causalimpact"
+            href="https://github.com/Vasu618/causal_impact"
             target="_blank"
             rel="noreferrer"
-            aria-label="GitHub"
+            aria-label="View project on GitHub"
             className="inline-flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted/60 hover:text-foreground"
           >
             <Github className="h-5 w-5" strokeWidth={1.75} />

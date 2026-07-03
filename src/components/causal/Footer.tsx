@@ -24,10 +24,10 @@ export function Footer() {
             </p>
             <div className="flex items-center gap-2 pt-1">
               <a
-                href="https://github.com/jamalsenouci/causalimpact"
+                href="https://github.com/Vasu618/causal_impact"
                 target="_blank"
                 rel="noreferrer"
-                aria-label="GitHub"
+                aria-label="View project on GitHub"
                 className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-border/60 bg-card/40 text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground"
               >
                 <Github className="h-4 w-4" />
